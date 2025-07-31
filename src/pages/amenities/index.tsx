@@ -1,4 +1,4 @@
-import { Card, Text, Title, Container, Grid, Group, Stack, Badge } from '@mantine/core';
+import { Card, Text, Title, Container, Grid, Group, Stack } from '@mantine/core';
 import { IconWifi, IconCar, IconCoffee, IconLeaf, IconBook, IconSun } from '@tabler/icons-react';
 import Header from "@/components/modules/header";
 import Footer from "@/components/modules/footer";

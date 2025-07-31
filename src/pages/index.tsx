@@ -1,115 +1,227 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+import {Button, Card, Text, Title, Group, Stack, Avatar, Container, Grid, Image, BackgroundImage} from '@mantine/core';
+import { IconLeaf, IconHeart, IconSun } from '@tabler/icons-react';
+import Header from "@/components/modules/header";
+import Footer from "@/components/modules/footer";
+import Link from 'next/link';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const HomePage = () => {
+  const services = [
+    {
+      title: 'Yoga & Meditation',
+      description: 'Ancient practices for modern wellness, helping you find balance and inner peace.',
+      image: 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=400',
+      icon: <IconLeaf size={24} />,
+    },
+    {
+      title: 'Ayurveda',
+      description: 'Traditional healing methods tailored to your unique constitution and needs.',
+      image: 'https://images.pexels.com/photos/3997993/pexels-photo-3997993.jpeg?auto=compress&cs=tinysrgb&w=400',
+      icon: <IconHeart size={24} />,
+    },
+    {
+      title: 'Holistic Healing',
+      description: 'Comprehensive wellness approaches addressing mind, body, and spirit.',
+      image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg?auto=compress&cs=tinysrgb&w=400',
+      icon: <IconSun size={24} />,
+    },
+  ];
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  const therapists = [
+    {
+      name: 'Dr. Priya Sharma',
+      role: 'Ayurveda Specialist',
+      image: 'https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=200',
+    },
+    {
+      name: 'Ravi Patel',
+      role: 'Yoga Master',
+      image: 'https://images.pexels.com/photos/8436730/pexels-photo-8436730.jpeg?auto=compress&cs=tinysrgb&w=200',
+    },
+    {
+      name: 'Maya Krishnan',
+      role: 'Meditation Guide',
+      image: 'https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=200',
+    },
+  ];
 
-export default function Home() {
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/pages/index.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      <div className="min-h-screen bg-white">
+        <Header />
+
+        {/* Hero Section */}
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: 'url(https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=1920)',
+              }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            {/*<div className="absolute inset-0 bg-black bg-opacity-40"></div>*/}
+          </div>
+          {/*<Image  src={"herosection.webp"}/>*/}
+          {/*<BackgroundImage src={"/herosection.webp"}/>*/}
+
+          <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
+            <Title order={1} size="4rem" fw={300} mb="xl" className="leading-tight">
+              Find Your Inner Peace
+            </Title>
+            <Text size="xl" mb="xl" className="max-w-2xl mx-auto leading-relaxed">
+              Discover tranquility through ancient wisdom and modern wellness practices
+              in our serene mountain sanctuary.
+            </Text>
+            <Button
+                color="#17CF91"
+                component={Link}
+                href="/about"
+                size="lg"
+                // className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-full transition-all duration-300 hover:shadow-xl hover:scale-105"
+            >
+              Begin Your Journey
+            </Button>
+          </div>
+        </section>
+
+        {/* Philosophy Section */}
+        <section className="py-20 bg-gray-50">
+          <Container size="lg">
+            <div className="max-w-3xl mx-auto text-center">
+              <Title order={2} size="2.5rem" mb="xl" c="dark">
+                Our Philosophy
+              </Title>
+              <Text size="lg" c="gray.7" className="leading-relaxed">
+                At Ananda Bhavan, we believe that true wellness comes from the harmony of mind, body, and spirit.
+                Our approach integrates ancient wisdom with modern understanding, creating a sanctuary where
+                healing happens naturally and transformation becomes possible.
+              </Text>
+            </div>
+          </Container>
+        </section>
+
+        {/* Featured Services */}
+        <section className="py-20">
+          <Container size="lg">
+            <Title order={2} size="2.5rem" mb="xl" ta="center" c="dark">
+              Featured Services
+            </Title>
+            <Grid>
+              {services.map((service, index) => (
+                  <Grid.Col key={index} span={{ base: 12, md: 4 }}>
+                    <Card
+                        shadow="md"
+                        padding="xl"
+                        className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group"
+                    >
+                      <div
+                          className="h-48 bg-cover bg-center rounded-lg mb-4"
+                          style={{ backgroundImage: `url(${service.image})` }}
+                      ></div>
+                      <Group mb="md">
+                        <div className="text-emerald-500 group-hover:text-emerald-600 transition-colors">
+                          {service.icon}
+                        </div>
+                        <Title order={3} size="1.5rem">
+                          {service.title}
+                        </Title>
+                      </Group>
+                      <Text c="gray.7" className="leading-relaxed">
+                        {service.description}
+                      </Text>
+                    </Card>
+                  </Grid.Col>
+              ))}
+            </Grid>
+          </Container>
+        </section>
+
+        {/* Meet the Therapists */}
+        <section className="py-20 bg-gray-50">
+          <Container size="lg">
+            <Title order={2} size="2.5rem" mb="xl" ta="center" c="dark">
+              Meet Our Therapists
+            </Title>
+            <Grid>
+              {therapists.map((therapist, index) => (
+                  <Grid.Col key={index} span={{ base: 12, sm: 6, md: 4 }}>
+                    <div className="text-center group">
+                      <Avatar
+                          src={therapist.image}
+                          size={120}
+                          radius="50%"
+                          mx="auto"
+                          mb="md"
+                          className="group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <Title order={4} size="1.25rem" mb="xs">
+                        {therapist.name}
+                      </Title>
+                      <Text c="emerald.6" fw={500}>
+                        {therapist.role}
+                      </Text>
+                    </div>
+                  </Grid.Col>
+              ))}
+            </Grid>
+          </Container>
+        </section>
+
+        {/* Call to Action */}
+        <section className="py-20 bg-emerald-500">
+          <Container size="lg">
+            <div className="text-center text-white">
+              <Title order={2} size="2.5rem" mb="xl">
+                Ready to Begin Your Journey?
+              </Title>
+              <Text size="xl" mb="xl" className=" text-center mb-5" >
+                Take the first step towards wellness and inner peace.
+                Our experienced team is here to guide you every step of the way.
+              </Text>
+              <Button
+
+                  component={Link}
+                  href="/contact"
+                  size="lg"
+                  variant="white"
+                  className="text-emerald-600 hover:bg-gray-100 px-8 py-3 rounded-full transition-all duration-300 hover:shadow-xl hover:scale-105"
+              >
+                Start Today
+              </Button>
+            </div>
+          </Container>
+        </section>
+
+        {/* Contact Section */}
+        <section className="py-20">
+          <Container size="lg">
+            <Title order={2} size="2.5rem" mb="xl" ta="center" c="dark">
+              Contact Us
+            </Title>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div>
+                <Stack gap="lg">
+                  <div>
+                    <Text fw={600} mb="xs">Visit Us</Text>
+                    <Text c="gray.7">123 Wellness Street, Peaceful Valley</Text>
+                  </div>
+                  <div>
+                    <Text fw={600} mb="xs">Call Us</Text>
+                    <Text c="gray.7">+1 (555) 123-4567</Text>
+                  </div>
+                  <div>
+                    <Text fw={600} mb="xs">Email Us</Text>
+                    <Text c="gray.7">info@anandabhavan.com</Text>
+                  </div>
+                </Stack>
+              </div>
+              <div className="h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+                <Text c="gray.6">Interactive Map Coming Soon</Text>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <Footer />
+      </div>
   );
-}
+};
+
+export default HomePage;
